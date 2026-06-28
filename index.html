@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Handwriting Font Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/opentype.js/1.3.4/opentype.min.js"></script>
+</head>
+<body>
+    <div id="welcomeModal" class="modal-overlay">
+        <div class="modal-box">
+            <h2>Welcome to Handfont</h2>
+            <p>Convert your hand-drawn canvas letters into a downloadablefont package!</p>
+            <p class="modal-subtitle">If you want to see how it looked for me, look at the example showcase. Or if you'd like to start drawing right away, go for it.</p>
+            
+            <div class="modal-actions">
+                <button id="btnStartDrawing" class="modal-btn primary">Draw My Font</button>
+                <button id="btnLoadExample" class="modal-btn secondary">See Example Showcase</button>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-container">
+        <div class="workspace-panel">
+            <header>
+                <h1>Draw: <span id="currentChar">A</span></h1>
+                <p class="subtitle">Keep your lines resting neatly on the baseline template guide.</p>
+            </header>
+            
+            <div class="canvas-wrapper">
+                <div id="ghostLetter" class="ghost-letter-preview">A</div>
+                <canvas id="paintCanvas" width="400" height="400"></canvas>
+                <div class="baseline-guide"></div>
+            </div>
+            
+            <div class="controls-row">
+                <button id="backBtn" class="btn secondary" disabled>← Back</button>
+                <button id="clearBtn" class="btn danger">Clear</button>
+                <button id="nextBtn" class="btn primary">Next / Skip →</button>
+            </div>
+            
+            <div class="action-row">
+                <button id="btnGlobalReset" class="btn danger-outline">💥 Reset All</button>
+                <button id="downloadBtn" class="btn success" style="flex: 2;">Build & Download Font (.otf)</button>
+            </div>
+        </div>
+
+        <div class="config-panel">
+            <div class="card section">
+                <h3>Font Character Sets</h3>
+                <p class="section-desc">Toggle sets below, then click apply to update your session:</p>
+                <div class="toggle-group">
+                    <button id="btnUpper" class="toggle-pill active">A-Z</button>
+                    <button id="btnLower" class="toggle-pill active">a-z</button>
+                    <button id="btnNumbers" class="toggle-pill active">0-9</button>
+                    <button id="btnSymbols" class="toggle-pill active">.,!?&</button>
+                </div>
+
+                <div id="configAlert" class="config-status-alert" style="display: none;">
+                    <span>⚠️ Changes pending</span>
+                    <button id="btnApplyConfig" class="btn-mini-action">Apply & Reset Font</button>
+                </div>
+            </div>
+
+            <div class="card section">
+                <h3>Canvas Reference Helpers</h3>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="toggleGhost" checked> Show background reference trace
+                </label>
+            </div>
+
+            <div class="card section testing-box">
+                <h3>Live Font Preview</h3>
+                <p class="section-desc">Type below to see your progress:</p>
+                <input type="text" id="liveTesterInput" placeholder="Type here..." value="AAA">
+                <div class="preview-display-container">
+                    <canvas id="previewRenderCanvas" width="400" height="120"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
