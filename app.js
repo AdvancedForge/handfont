@@ -592,5 +592,5 @@ function resizeCanvas() {
     // redraw existing strokes if necessary
 }
 
-window.addEventListener("resize", resizeCanvas);
+//window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
