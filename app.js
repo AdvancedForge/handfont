@@ -581,3 +581,16 @@ window.onload = function() {
         link.click();
     });
 };
+
+function resizeCanvas() {
+    const canvas = document.getElementById("paintCanvas");
+    const size = canvas.clientWidth;
+
+    canvas.width = size;
+    canvas.height = size;
+
+    // redraw existing strokes if necessary
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
