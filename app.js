@@ -156,14 +156,14 @@ window.onload = function() {
     }
 
     // --- Interactive Canvas Hooks ---
-    canvas.addEventListener('mousedown', (e) => {
+    canvas.addEventListener('pointerdown', (e) => {
         drawing = true;
         const pt = getCanvasPos(e);
         currentStroke = [{ x: pt.x, y: pt.y }];
         drawAll();
     });
 
-    canvas.addEventListener('mousemove', (e) => {
+    canvas.addEventListener('pointermove', (e) => {
         if (!drawing) return;
         const pt = getCanvasPos(e);
         currentStroke.push({ x: pt.x, y: pt.y });
@@ -181,8 +181,8 @@ window.onload = function() {
         renderLivePreview();
     };
 
-    canvas.addEventListener('mouseup', endDrawing);
-    canvas.addEventListener('mouseleave', endDrawing);
+    canvas.addEventListener('pointerup', endDrawing);
+    canvas.addEventListener('pointercancel', endDrawing);
 
     function getCanvasPos(e) {
         const rect = canvas.getBoundingClientRect();

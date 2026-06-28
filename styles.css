@@ -8,11 +8,11 @@
 body {
     background: #f1f5f9;
     min-height: 100vh;
-    padding: 16px;
+    padding: 2.5vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 .dashboard-container {
@@ -275,4 +275,10 @@ header h1 span { color: #2563eb; background: #eff6ff; padding: 0px 8px; border-r
     header h1 {
         font-size: 1.3rem;
     }
+}
+
+#paintCanvas {
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
